@@ -19,9 +19,9 @@ Conversions Between Braille Representations in Perl
 
   Convert a string between:
 
-  Braille-ASCII <=> Unicode
-  Braille-ASCII <=> Dots
-           Dots <=> Unicode
+    Braille-ASCII ⇔ Unicode
+    Braille-ASCII ⇔ Dots
+             Dots ⇔ Unicode
 
   Unicode here means "UTF-8" encoded text.
 
@@ -45,9 +45,9 @@ Conversions Between Braille Representations in Perl
 
   I intend to work on conversion for Braille implementations:
 
-    `Convert::Braille::English`   (started, need definitive info)
-    `Convert::Braille::Ethiopic`  (done!)
-    `Convert::Braille::Japanese`  (not started)
+    Convert::Braille::English   (started, need definitive info)
+    Convert::Braille::Ethiopic  (done!)
+    Convert::Braille::Japanese  (not started)
 
   Ethiopic and Japanese both use multi char Braille sequences
   to represent their systems of writing which presents some
