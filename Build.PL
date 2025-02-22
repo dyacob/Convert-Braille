@@ -11,7 +11,7 @@ my $builder = Module::Build->new(
 	configure_requires	=> { 'Module::Build' => 0.42 },
 	requires 		=> {
 		'perl'				=> '5.6.1',
-		'Convert::Number::Ethiopic'	=> '0.21'
+		'Convert::Number::Ethiopic'	=> '0.14'
 	},
 	license			=> 'perl',
 	add_to_cleanup		=> [ 'Convert-Braille-*' ],
