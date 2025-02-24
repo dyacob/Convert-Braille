@@ -10,11 +10,11 @@ use base qw(Exporter);
 use strict;
 use vars qw( @EXPORT @EXPORT_OK $VERSION
 	%EnglishToBrailleUnicode
-	%BrailleUnicodeToEnglish
+	%Braille_UnicodeToEnglish
 	%SpecialContext
 );
 use Convert::Braille qw(
-	%BrailleAsciiToUnicode
+	%Braille_AsciiToUnicode
 	braille_AsciiToUnicode
 	braille_DotNumbersToUnicode
 	braille_UnicodeToAscii
@@ -42,7 +42,7 @@ $VERSION = '0.06';
 	braille_UnicodeToEnglish
 
 	%EnglishToBrailleUnicode
-	%BrailleUnicodeToEnglish
+	%Braille_UnicodeToEnglish
 	%SpecialContext
 );
 
@@ -130,7 +130,7 @@ $VERSION = '0.06';
 # _ is Contraction_456
 
 foreach ( keys %EnglishToBrailleUnicode ) {
-	$BrailleUnicodeToEnglish{$EnglishToBrailleUnicode{$_}} = $_;
+	$Braille_UnicodeToEnglish{$EnglishToBrailleUnicode{$_}} = $_;
 }
 
 #
@@ -174,11 +174,11 @@ sub	braille_UnicodeToEnglish
 			# analyze context
 			#
 		}
-		elsif ( exists($BrailleUnicodeToEnglish{$_}) ) {
+		elsif ( exists($Braille_UnicodeToEnglish{$_}) ) {
 			#
 			# simple map
 			#
-			$trans .= $BrailleUnicodeToEnglish{$_};
+			$trans .= $Braille_UnicodeToEnglish{$_};
 		}
 		else {
 			#
@@ -262,23 +262,23 @@ __END__
 
 =head1 REQUIRES
 
-perl5.6.0 or later.
+perl5.6.1 or later.
 
 =head1 EXPORTS
 
 =over 4
 
-=item englishToBrailleUnicode
+=item englishToBrailleUnicode( $arg )
 
-=item englishToBrailleAscii
+=item englishToBrailleAscii( $arg )
 
-=item englishToBrailleDotNumbers
+=item englishToBrailleDotNumbers( $arg )
 
-=item braille_AsciiToEnglish
+=item braille_AsciiToEnglish( $arg )
 
-=item braille_DotNumbersToEnglish
+=item braille_DotNumbersToEnglish( $arg )
 
-=item braille_UnicodeToEnglish
+=item braille_UnicodeToEnglish( $arg )
 
 =back
 

@@ -8,7 +8,7 @@ use warnings;
 use base qw(Exporter);
 
 use strict;
-use vars qw( @EXPORT @EXPORT_OK $VERSION %BrailleAsciiToUnicode %BrailleUnicodeToAscii $dot_separator );
+use vars qw( @EXPORT @EXPORT_OK $VERSION %Braille_AsciiToUnicode %Braille_UnicodeToAscii $dot_separator );
 
 $VERSION = '0.06';
 
@@ -31,10 +31,10 @@ $VERSION = '0.06';
 	braille_DotNumbersToAscii
 
 	%Braille_AsciiToUnicode
-	%Unicod_eToBrailleAscii
+	%UnicodeToBrailleAscii
 );
 
-%BrailleAsciiToUnicode =(
+%Braille_AsciiToUnicode =(
 	A	=> '⠁',
 	B	=> '⠃',
 	C	=> '⠉',
@@ -103,8 +103,8 @@ $VERSION = '0.06';
 );
 
 
-foreach ( keys %BrailleAsciiToUnicode ) {
-	$BrailleUnicodeToAscii{$BrailleAsciiToUnicode{$_}} = $_;
+foreach ( keys %Braille_AsciiToUnicode ) {
+	$Braille_UnicodeToAscii{$Braille_AsciiToUnicode{$_}} = $_;
 }
 
 $dot_separator = "";
@@ -127,7 +127,7 @@ sub	braille_AsciiToUnicode
 	return unless ( defined($_[0]) );
 
 	my $ascii = uc($_[0]);
-	$ascii =~ s/(.)/_convert ( $1, \%BrailleAsciiToUnicode )/ge;
+	$ascii =~ s/(.)/_convert ( $1, \%Braille_AsciiToUnicode )/ge;
 	$ascii;
 }
 
@@ -146,7 +146,7 @@ sub	braille_UnicodeToAscii
 		$unicode =~ tr/⢀-⣿/⠀-⡿/;  # fold upper half
 		$unicode =~ tr/⡀-⡿/⠀-⠿/;  # fold upper quarter
 	}
-	$unicode =~ s/(.)/_convert ( $1, \%BrailleUnicodeToAscii )/ge;
+	$unicode =~ s/(.)/_convert ( $1, \%Braille_UnicodeToAscii )/ge;
 	$unicode;
 }
 
@@ -192,6 +192,9 @@ sub	braille_DotNumbersToUnicode
 
 	my $string = shift;
 	return "" if !defined $string || $string eq ""; 
+
+	$string =~ s/$dot_separator//g if( $dot_separator );
+
 
 	my @bits  = split ( //, $string );
 
@@ -260,37 +263,47 @@ __END__
 
 =head1 REQUIRES
 
-perl5.6.0 or later.
+perl5.6.1 or later.
 
 =head1 EXPORTS
 
 =over 4
 
-=item braille_AsciiToUnicode
+=item braille_AsciiToUnicode( $arg )
 
-HELLO => ⠓⠑⠇⠇⠕
+  Convert an ASCII ([A-Z0-9]) $arg into Unicode Braille codes. E.g.:
 
-=item braille_UnicodeToAscii
+  HELLO → ⠓⠑⠇⠇⠕
 
- ⠓⠑⠇⠇⠕ => HELLO
+=item braille_UnicodeToAscii( $arg )
 
-=item braille_UnicodeToDotNumbers
+  Convert a Unicode Braille $arg into an ASCII string. E.g.:
 
-⠓⠑⠇⠇⠕ => 12515123123135
+  ⠓⠑⠇⠇⠕ => HELLO
 
-=item braille_DotNumbersToUnicode
+=item braille_UnicodeToDotNumbers( $arg )
 
-12515123123135 => ⠓⠑⠇⠇⠕ 
+  Convert a Unicode Braille $arg into a Braille "dot numbers". E.g.:
 
-This method converts Dot Numbers into Unicode Braille
+  ⠓⠑⠇⠇⠕ => 12515123123135
 
-=item braille_AsciiToDotNumbers
+=item braille_DotNumbersToUnicode( $arg )
 
-HELLO => 12515123123135
+  Convert a Braille "dot numbers" $arg into Unicode Braille. E.g.:
 
-=item braille_DotNumbersToAscii
+  12515123123135 => ⠓⠑⠇⠇⠕ 
 
-12515123123135 => HELLO
+=item braille_AsciiToDotNumbers( $arg )
+
+  Convert an ASCII ([A-Z0-9]) $arg into Braille "dot numbers". E.g.:
+
+  HELLO => 12515123123135
+
+=item braille_DotNumbersToAscii( $arg )
+
+  Convert a Braille "dot numbers" $arg into an ASCII string. E.g.:
+
+  12515123123135 => HELLO
 
 =back
 

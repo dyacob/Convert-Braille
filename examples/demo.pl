@@ -11,24 +11,24 @@ if ( $] > 5.007 ) {
 
 my $ascii = "HELLO";
 
-print "[0/6] Testing Braill-ASCII : \"$ascii\"\n";
+print "[0/6] Testing Braille-ASCII : \"$ascii\"\n";
 
 my $unicode = braille_AsciiToUnicode ( $ascii );
 print "[1/6] braille_AsciiToUnicode:  $ascii => $unicode  (has length: ", length($unicode), ")\n";
 
 my $dots = braille_AsciiToDotNumbers ( $ascii );
-print "[2/6] braille_AsciiToDots   :  $ascii => $dots\n";
+print "[2/6] braille_AsciiToDotNumbers   :  $ascii => $dots\n";
 
 $ascii = braille_DotNumbersToAscii ( $dots );
-print "[3/6] braille_DotsToAscii   :  $dots => $ascii\n";
+print "[3/6] braille_DotNumbersToAscii   :  $dots => $ascii\n";
 
 $unicode = braille_DotNumbersToUnicode ( $dots );
-print "[4/6] braille_DotsToUnicode :  $dots => $unicode  (has length: ", length($unicode), ")\n";
+print "[4/6] braille_DotNumbersToUnicode :  $dots => $unicode  (has length: ", length($unicode), ")\n";
 
 $Convert::Braille::dot_separator ="-";
 
 $dots = braille_UnicodeToDotNumbers ( $unicode );
-print "[5/6] braille_UnicodeToDots :  $unicode => $dots\n";
+print "[5/6] braille_UnicodeToDotNumbers :  $unicode => $dots\n";
 
 $Convert::Braille::dot_separator = undef;
 
@@ -40,7 +40,7 @@ __END__
 
 =head1 NAME
 
-demo.pl - Unicode, ASCII, Dots, Conversion Demonstration of Braille.
+demo.pl - Unicode, ASCII, DotNumbers, Conversion Demonstration of Braille.
 
 =head1 SYNOPSIS
 
