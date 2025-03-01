@@ -192,10 +192,8 @@ sub	brailleUnicode_To_Ethiopic
 
 	foreach  ( @chars ) { # the ኧ problem forces shifting
 
-# print "\tChecking:  $_\n";
 
 		if ( exists($BrailleUnicode_To_Ethiopic{$_}) ) {
-# print "\tFound:  $BrailleUnicode_To_Ethiopic{$_}\n";
 			if (
 			      $base && $base !~ /[እዕውይ]/ &&
 			      $BrailleUnicode_To_Ethiopic{$_} eq 'ው' 
@@ -217,16 +215,11 @@ sub	brailleUnicode_To_Ethiopic
 				$trans .= $base if( $base );
 				$base = $BrailleUnicode_To_Ethiopic{$_};
 			}
-# print "\tBase:  $base\n";
 		}
 		elsif ( exists($EthiopicForms{$_}) ) {
-# print "\tForm: $_ => $EthiopicForms{$_} [$trans]/[$base]\n";
-# my $test = chr(ord($base)+$EthiopicForms{$_});
-# print "\tNew: $test\n";
 			$trans .= chr(ord($base)+$EthiopicForms{$_}) unless ( $zemede_rabi );
 			$base = undef;
 			$zemede_rabi = 0;
-# print "\tTrans:  $trans\n";
 		}
 		else {
 			if ( $base ) {
@@ -261,7 +254,7 @@ sub	ethiopic_To_BrailleUnicode
 	my $trans;
 
 	#
-    # change to for loop
+	# change to for loop
 	#
 	while  ( $_ = shift @chars ) {
 
@@ -339,7 +332,7 @@ sub	brailleDotNumbers_To_Ethiopic
 
 __END__
 
-
+=encoding utf8
 
 =head1 NAME
 
@@ -349,7 +342,7 @@ __END__
 
  use Convert::Braille::Ethiopic;
 
- print brailleAscii_To_Ethiopic ( "S5LAM" ), "\n";
+ print ethiopic_To_BrailleUnicode ( "ሰላምታ" ), "\n";
  print brailleDots_To_Ethiopic  ( "234261231134" ), "\n";
 
 
@@ -361,17 +354,42 @@ perl5.6.1 or later, L<Convert::Number::Ethiopic>
 
 =over 4
 
-=item ethiopic_To_BrailleUnicode( $arg )
+=item brailleAscii_To_Ethiopic( $arg )
+
+  Convert an Amharic-Braille-ASCII ([A-Z0-9]) $arg into Ethiopic. E.g.:
+
+  S5LAMTA => ሰላምታ
 
 =item ethiopic_To_BrailleAscii( $arg )
 
-=item ethiopic_To_BrailleDots( $arg )
+  Convert an Ethiopic $arg into an Amharic-ASCII string. E.g.:
 
-=item brailleAscii_To_Ethiopic( $arg )
+  ሰላምታ => S5LAMTA
 
-=item brailleDots_To_Ethiopic( $arg )
+=item ethiopic_To_BrailleUnicode( $arg )
+
+  Convert a Ethiopic $arg into an Unicode Braille codes. E.g.:
+
+  ሰላምታ => ⠎⠢⠇⠁⠍⠞⠁
 
 =item brailleUnicode_To_Ethiopic( $arg )
+
+  Convert a Unicode Braille $arg into an Ethiopic. E.g.:
+
+  ⠎⠢⠇⠁⠍⠞⠁ => ሰላምታ
+
+=item ethiopic_To_BrailleDotNumberss( $arg )
+
+  Convert a Ethiopic $arg into a Braille "dot numbers". E.g.:
+
+  ሰላምታ => 234-26-123-1-134-2345-1
+
+=item brailleDotNumberss_To_Ethiopic( $arg )
+
+  Convert a Braille "dot numbers" $arg into Ethiopic. E.g.:
+
+  234-26-123-1-134-2345-1 => ሰላምታ
+
 
 =back
 
@@ -386,14 +404,15 @@ None presently known.
 
 =head1 AUTHOR
 
-Daniel Yacob,  L<dyacob@cpan.org|mailto:dyacob@cpan.org>
+Daniel Yacob, L<dyacob@cpan.org|mailto:dyacob@cpan.org>
 
 =head1 SEE ALSO
 
-L<Convert::Braille>    L<Convert::Braille::English>
+L<Convert::Braille> , L<Convert::Braille::English>
 
 Included with this package:
 
-  examples/demo.pl    examples/makeethiopic.pl
+  examples/demo.pl        examples/makeethiopic.pl
+  examples/ethiopic.pl    examples/english.pl
 
 =cut

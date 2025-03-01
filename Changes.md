@@ -1,9 +1,10 @@
 # Revision History for the Convert::Braille Perl Distribution
 
-## 0.06 Fri Feb 21 21:16:32 EST 2025
+## 0.06 Fri Feb 28 Fri Feb 28 21:31:11 EST 2025
 	- Migration to a Build.PL & GitHub system.
-	- The "braille" function prefix is renamed "braille_" for readability.
+	- Functions renamed for clarity.
 	- The "Dots" term is renamed "DotNumbers" for clarity.
+	- examples/ethiopic.pl and examples/english added.
 
 ## 0.05 Fri Jun 20 21:15:37 EDT 2003
 	- updated for Convert::Number::Ethiopic.

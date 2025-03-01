@@ -248,7 +248,7 @@ sub	brailleDotNumbers_To_English
 
 __END__
 
-
+=encoding utf8
 
 =head1 NAME
 
@@ -258,7 +258,7 @@ __END__
 
  use Convert::Braille;
 
- print brailleAscii_To_English ( "HELLO" ), "\n";
+ print english_To_BrailleUnicode ( "HELLO" ), "\n";
  print brailleDotNumbers_To_English  ( "12515123123135" ), "\n";
 
 
@@ -270,17 +270,45 @@ perl5.6.1 or later.
 
 =over 4
 
-=item english_To_BrailleUnicode( $arg )
+=item brailleAscii_To_English( $arg )
+
+  Convert an Braille-ASCII ([A-Z0-9]) $arg into English. E.g.:
+
+  HELLO => HELLO
+
+I<This is a trivial conversion since English overlaps with Braille-ASCII>
 
 =item english_To_BrailleAscii( $arg )
 
-=item english_To_BrailleDotNumbers( $arg )
+  Convert an English $arg into an Amharic-ASCII string. E.g.:
 
-=item brailleAscii_To_English( $arg )
+  HELLO => HELLO
 
-=item brailleDotNumbers_To_English( $arg )
+I<This is a trivial conversion since English overlaps with Braille-ASCII>
+
+=item english_To_BrailleUnicode( $arg )
+
+  Convert a English $arg into an Unicode Braille codes. E.g.:
+
+  HELLO => ⠓⠑⠇⠇⠕
 
 =item brailleUnicode_To_English( $arg )
+
+  Convert a Unicode Braille $arg into an English. E.g.:
+
+  ⠓⠑⠇⠇⠕ => HELLO
+
+=item english_To_BrailleDotNumberss( $arg )
+
+  Convert a English $arg into a Braille "dot numbers". E.g.:
+
+  HELLO => 125-15-123-123-135
+
+=item brailleDotNumberss_To_English( $arg )
+
+  Convert a Braille "dot numbers" $arg into English. E.g.:
+
+  125-15-123-123-135 => HELLO
 
 =back
 
@@ -295,14 +323,15 @@ None presently known.
 
 =head1 AUTHOR
 
-Daniel Yacob,  L<dyacob@cpan.org|mailto:dyacob@cpan.org>
+Daniel Yacob, L<dyacob@cpan.org|mailto:dyacob@cpan.org>
 
 =head1 SEE ALSO
 
-L<Convert::Braille>    L<Convert::Braille::Ethiopic>
+L<Convert::Braille> ,  L<Convert::Braille::Ethiopic>
 
 Included with this package:
 
-  examples/demo.pl
+  examples/demo.pl        examples/makeethiopic.pl
+  examples/ethiopic.pl    examples/english.pl
 
 =cut

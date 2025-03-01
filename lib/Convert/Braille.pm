@@ -318,7 +318,7 @@ None presently known.
 
 =head1 AUTHOR
 
-Daniel Yacob,  L<dyacob@cpan.org|mailto:dyacob@cpan.org>
+Daniel Yacob, L<dyacob@cpan.org|mailto:dyacob@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -329,7 +329,7 @@ modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =head1 SEE ALSO
 
-L<Convert::Braille> ,  L<Convert::Braille::English>
+L<Convert::Braille::Ethiopic> , L<Convert::Braille::English>
 
 Included with this package:
 

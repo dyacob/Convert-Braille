@@ -7,6 +7,8 @@ MANIFEST
 README.md
 SECURITY.md
 examples/demo.pl
+examples/english.pl
+examples/ethiopic.pl
 examples/makeethiopic.pl
 lib/Convert/Braille.pm
 lib/Convert/Braille/English.pm
