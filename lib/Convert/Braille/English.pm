@@ -9,104 +9,104 @@ use base qw(Exporter);
 
 use strict;
 use vars qw( @EXPORT @EXPORT_OK $VERSION
-	%EnglishToBrailleUnicode
-	%Braille_UnicodeToEnglish
+	%English_To_BrailleUnicode
+	%BrailleUnicode_To_English
 	%SpecialContext
 );
 use Convert::Braille qw(
-	%Braille_AsciiToUnicode
-	braille_AsciiToUnicode
-	braille_DotNumbersToUnicode
-	braille_UnicodeToAscii
-	braille_UnicodeToDotNumbers
+	%BrailleAscii_To_Unicode
+	brailleAscii_To_Unicode
+	brailleDotNumbers_To_Unicode
+	brailleUnicode_To_Ascii
+	brailleUnicode_To_DotNumbers
 );
 
 $VERSION = '0.06';
 
 @EXPORT = qw(
-	englishToBrailleUnicode
-	englishToBrailleAscii
-	englishToBrailleDotNumbers
+	english_To_BrailleUnicode
+	english_To_BrailleAscii
+	english_To_BrailleDotNumbers
 
-	braille_AsciiToEnglish
-	braille_DotNumbersToEnglish
-	braille_UnicodeToEnglish
+	brailleAscii_To_English
+	brailleDotNumbers_To_English
+	brailleUnicode_To_English
 );
 @EXPORT_OK = qw(
-	englishToBrailleUnicode
-	englishToBrailleAscii
-	englishToBrailleDotNumbers
+	english_To_BrailleUnicode
+	english_To_BrailleAscii
+	english_To_BrailleDotNumbers
 
-	braille_AsciiToEnglish
-	braille_DotNumbersToEnglish
-	braille_UnicodeToEnglish
+	brailleAscii_To_English
+	brailleDotNumbers_To_English
+	brailleUnicode_To_English
 
-	%EnglishToBrailleUnicode
-	%Braille_UnicodeToEnglish
+	%English_To_BrailleUnicode
+	%BrailleUnicode_To_English
 	%SpecialContext
 );
 
-%EnglishToBrailleUnicode =(
-	A	=> $BrailleAsciiToUnicode{A},
-	B	=> $BrailleAsciiToUnicode{B},
-	B	=> $BrailleAsciiToUnicode{C},
-	C	=> $BrailleAsciiToUnicode{D},
-	E	=> $BrailleAsciiToUnicode{E},
-	F	=> $BrailleAsciiToUnicode{F},
-	G	=> $BrailleAsciiToUnicode{G},
-	H	=> $BrailleAsciiToUnicode{H},
-	I	=> $BrailleAsciiToUnicode{I},
-	J	=> $BrailleAsciiToUnicode{J},
-	K	=> $BrailleAsciiToUnicode{K},
-	L	=> $BrailleAsciiToUnicode{L},
-	M	=> $BrailleAsciiToUnicode{M},
-	N	=> $BrailleAsciiToUnicode{N},
-	O	=> $BrailleAsciiToUnicode{O},
-	P	=> $BrailleAsciiToUnicode{P},
-	Q	=> $BrailleAsciiToUnicode{Q},
-	R	=> $BrailleAsciiToUnicode{R},
-	S	=> $BrailleAsciiToUnicode{S},
-	T	=> $BrailleAsciiToUnicode{T},
-	U	=> $BrailleAsciiToUnicode{U},
-	V	=> $BrailleAsciiToUnicode{V},
-	W	=> $BrailleAsciiToUnicode{W},
-	X	=> $BrailleAsciiToUnicode{X},
-	Y	=> $BrailleAsciiToUnicode{Y},
-	Z	=> $BrailleAsciiToUnicode{Z},
+%English_To_BrailleUnicode =(
+	A	=> $BrailleAscii_To_Unicode{A},
+	B	=> $BrailleAscii_To_Unicode{B},
+	B	=> $BrailleAscii_To_Unicode{C},
+	C	=> $BrailleAscii_To_Unicode{D},
+	E	=> $BrailleAscii_To_Unicode{E},
+	F	=> $BrailleAscii_To_Unicode{F},
+	G	=> $BrailleAscii_To_Unicode{G},
+	H	=> $BrailleAscii_To_Unicode{H},
+	I	=> $BrailleAscii_To_Unicode{I},
+	J	=> $BrailleAscii_To_Unicode{J},
+	K	=> $BrailleAscii_To_Unicode{K},
+	L	=> $BrailleAscii_To_Unicode{L},
+	M	=> $BrailleAscii_To_Unicode{M},
+	N	=> $BrailleAscii_To_Unicode{N},
+	O	=> $BrailleAscii_To_Unicode{O},
+	P	=> $BrailleAscii_To_Unicode{P},
+	Q	=> $BrailleAscii_To_Unicode{Q},
+	R	=> $BrailleAscii_To_Unicode{R},
+	S	=> $BrailleAscii_To_Unicode{S},
+	T	=> $BrailleAscii_To_Unicode{T},
+	U	=> $BrailleAscii_To_Unicode{U},
+	V	=> $BrailleAscii_To_Unicode{V},
+	W	=> $BrailleAscii_To_Unicode{W},
+	X	=> $BrailleAscii_To_Unicode{X},
+	Y	=> $BrailleAscii_To_Unicode{Y},
+	Z	=> $BrailleAscii_To_Unicode{Z},
 
-	1	=> $BrailleAsciiToUnicode{1},
-	2	=> $BrailleAsciiToUnicode{2},
-	3	=> $BrailleAsciiToUnicode{3},
-	4	=> $BrailleAsciiToUnicode{4},
-	5	=> $BrailleAsciiToUnicode{5},
-	6	=> $BrailleAsciiToUnicode{6},
-	7	=> $BrailleAsciiToUnicode{7},
-	8	=> $BrailleAsciiToUnicode{8},
-	9	=> $BrailleAsciiToUnicode{9},
-	0	=> $BrailleAsciiToUnicode{0},
+	1	=> $BrailleAscii_To_Unicode{1},
+	2	=> $BrailleAscii_To_Unicode{2},
+	3	=> $BrailleAscii_To_Unicode{3},
+	4	=> $BrailleAscii_To_Unicode{4},
+	5	=> $BrailleAscii_To_Unicode{5},
+	6	=> $BrailleAscii_To_Unicode{6},
+	7	=> $BrailleAscii_To_Unicode{7},
+	8	=> $BrailleAscii_To_Unicode{8},
+	9	=> $BrailleAscii_To_Unicode{9},
+	0	=> $BrailleAscii_To_Unicode{0},
 
-	'and'	=> $BrailleAsciiToUnicode{'&'},
-	the	=> $BrailleAsciiToUnicode{'!'},
-	'for'	=> $BrailleAsciiToUnicode{'='},
-	with	=> $BrailleAsciiToUnicode{'('},
-	of	=> $BrailleAsciiToUnicode{')'}
+	'and'	=> $BrailleAscii_To_Unicode{'&'},
+	the	=> $BrailleAscii_To_Unicode{'!'},
+	'for'	=> $BrailleAscii_To_Unicode{'='},
+	with	=> $BrailleAscii_To_Unicode{'('},
+	of	=> $BrailleAscii_To_Unicode{')'}
 );
 
 %SpecialContext =(
-	ar	=> $BrailleAsciiToUnicode{'>'},
-	ch	=> $BrailleAsciiToUnicode{'*'},
-	ed	=> $BrailleAsciiToUnicode{'$'},
-	en	=> $BrailleAsciiToUnicode{5},
-	er	=> $BrailleAsciiToUnicode{']'},
-	gh	=> $BrailleAsciiToUnicode{'<'},
-	in	=> $BrailleAsciiToUnicode{9},
-	ing	=> $BrailleAsciiToUnicode{'+'},
-	ou	=> $BrailleAsciiToUnicode{'\\'},
-	ow	=> $BrailleAsciiToUnicode{'['},
-	st	=> $BrailleAsciiToUnicode{'/'},
-	sh	=> $BrailleAsciiToUnicode{'%'},
-	th	=> $BrailleAsciiToUnicode{'?'},
-	wh	=> $BrailleAsciiToUnicode{':'},
+	ar	=> $BrailleAscii_To_Unicode{'>'},
+	ch	=> $BrailleAscii_To_Unicode{'*'},
+	ed	=> $BrailleAscii_To_Unicode{'$'},
+	en	=> $BrailleAscii_To_Unicode{5},
+	er	=> $BrailleAscii_To_Unicode{']'},
+	gh	=> $BrailleAscii_To_Unicode{'<'},
+	in	=> $BrailleAscii_To_Unicode{9},
+	ing	=> $BrailleAscii_To_Unicode{'+'},
+	ou	=> $BrailleAscii_To_Unicode{'\\'},
+	ow	=> $BrailleAscii_To_Unicode{'['},
+	st	=> $BrailleAscii_To_Unicode{'/'},
+	sh	=> $BrailleAscii_To_Unicode{'%'},
+	th	=> $BrailleAscii_To_Unicode{'?'},
+	wh	=> $BrailleAscii_To_Unicode{':'},
 
 	'!'		=> 6,
 	':'		=> 3,
@@ -129,8 +129,8 @@ $VERSION = '0.06';
 # ^ is Contraction_45
 # _ is Contraction_456
 
-foreach ( keys %EnglishToBrailleUnicode ) {
-	$Braille_UnicodeToEnglish{$EnglishToBrailleUnicode{$_}} = $_;
+foreach ( keys %English_To_BrailleUnicode ) {
+	$BrailleUnicode_To_English{$English_To_BrailleUnicode{$_}} = $_;
 }
 
 #
@@ -160,7 +160,7 @@ sub	_convert
 }
 
 
-sub	braille_UnicodeToEnglish
+sub	brailleUnicode_To_English
 {
 
 	return unless ( $_[0] );
@@ -174,11 +174,11 @@ sub	braille_UnicodeToEnglish
 			# analyze context
 			#
 		}
-		elsif ( exists($Braille_UnicodeToEnglish{$_}) ) {
+		elsif ( exists($BrailleUnicode_To_English{$_}) ) {
 			#
 			# simple map
 			#
-			$trans .= $Braille_UnicodeToEnglish{$_};
+			$trans .= $BrailleUnicode_To_English{$_};
 		}
 		else {
 			#
@@ -191,7 +191,7 @@ sub	braille_UnicodeToEnglish
 }
 
 
-sub	englishToBrailleUnicode
+sub	english_To_BrailleUnicode
 {
 
 	return unless ( $_[0] );
@@ -206,35 +206,37 @@ sub	englishToBrailleUnicode
 			# special cases
 			# 
 		}
-		elsif ( exists($EnglishToBrailleUnicode{$_}) ) {
-			$trans .= $EnglishToBrailleUnicode{$_};
+		elsif ( exists($English_To_BrailleUnicode{$_}) ) {
+			$trans .= $English_To_BrailleUnicode{$_};
 		}
 	}
+
+	$trans;
 	
 }
 
 
-sub	englishToBrailleAscii
+sub	english_To_BrailleAscii
 {
-	braille_UnicodeToAscii ( englishToBrailleUnicode ( @_ ) );
+	brailleUnicode_To_Ascii ( english_To_BrailleUnicode ( @_ ) );
 }
 
 
-sub	englishToBrailleDotNumbers
+sub	english_To_BrailleDotNumbers
 {
-	braille_UnicodeToDotNumbers ( englishToBrailleUnicode ( @_ ) );
+	brailleUnicode_To_DotNumbers ( english_To_BrailleUnicode ( @_ ) );
 }
 
 
-sub	braille_AsciiToEnglish
+sub	brailleAscii_To_English
 {
-	braille_UnicodeToEnglish ( braille_AsciiToUnicode ( @_ ) );
+	brailleUnicode_To_English ( brailleAscii_To_Unicode ( @_ ) );
 }
 
 
-sub	braille_DotNumbersToEnglish
+sub	brailleDotNumbers_To_English
 {
-	braille_UnicodeToEnglish ( braille_DotNumbersToUnicode ( @_ ) );
+	brailleUnicode_To_English ( brailleDotNumbers_To_Unicode ( @_ ) );
 }
 
 
@@ -256,8 +258,8 @@ __END__
 
  use Convert::Braille;
 
- print braille_AsciiToEnglish ( "HELLO" ), "\n";
- print braille_DotNumbersToEnglish  ( "12515123123135" ), "\n";
+ print brailleAscii_To_English ( "HELLO" ), "\n";
+ print brailleDotNumbers_To_English  ( "12515123123135" ), "\n";
 
 
 =head1 REQUIRES
@@ -268,17 +270,17 @@ perl5.6.1 or later.
 
 =over 4
 
-=item englishToBrailleUnicode( $arg )
+=item english_To_BrailleUnicode( $arg )
 
-=item englishToBrailleAscii( $arg )
+=item english_To_BrailleAscii( $arg )
 
-=item englishToBrailleDotNumbers( $arg )
+=item english_To_BrailleDotNumbers( $arg )
 
-=item braille_AsciiToEnglish( $arg )
+=item brailleAscii_To_English( $arg )
 
-=item braille_DotNumbersToEnglish( $arg )
+=item brailleDotNumbers_To_English( $arg )
 
-=item braille_UnicodeToEnglish( $arg )
+=item brailleUnicode_To_English( $arg )
 
 =back
 

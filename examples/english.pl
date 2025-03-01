@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 
-use Convert::Braille;
+use Convert::Braille qw( brailleAscii_To_Unicode );
+use Convert::Braille::English;
 use utf8;
 
 # $Convert::Braille::dot_separator ="-";
@@ -11,37 +12,37 @@ if ( $] > 5.007 ) {
 
 my $ascii = "HELLO";
 
-print "[0/6] Testing Braille-English : \"$ascii\"\n";
+print "[0/6] Testing Braille-English     : \"$ascii\"\n";
 
-my $unicode = braille_AsciiToEnglish ( $ascii );
-print "[1/6] braille_AsciiToEnglish:  $ascii => $unicode  (has length: ", length($unicode), ")\n";
+my $english = brailleAscii_To_English ( $ascii );
+print "[1/6] brailleAscii_To_English     :  $ascii => $english  (has length: ", length($english), ")\n";
 
-$dots = englishToBrailleAscii ( $unicode );
-print "[2/6] englishToBrailleAscii :  $unicode => $dots\n";
+$ascii = english_To_BrailleAscii ( $english );
+print "[2/6] english_To_BrailleAscii     :  $english => $ascii\n";
 
-$ascii = braille_DotNumbersToEnglih ( $dots );
-print "[3/6] braille_DotNumbersToEnglih   :  $dots => $ascii\n";
+my $unicode = english_To_BrailleUnicode ( $english );
+print "[3/6] english_To_BrailleUnicode   :  $english => $unicode  (has length: ", length($unicode), ")\n";
 
-$unicode = englishToBrailleUnicode ( $dots );
-print "[4/6] englishToBrailleUnicode :  $dots => $unicode  (has length: ", length($unicode), ")\n";
+$english = brailleUnicode_To_English ( $unicode );
+print "[4/6] brailleUnicode_To_Englih    :  $unicode => $english\n";
 
 $Convert::Braille::dot_separator ="-";
 
-my $dots = englishToBrailleDotNumbers ( $ascii );
-print "[2/6] englishToBrailleDotNumbers   :  $ascii => $dots\n";
+my $dots = english_To_BrailleDotNumbers ( $english );
+print "[5/6] english_To_BrailleDotNumbers:  $english => $dots\n";
+
+$english = brailleDotNumbers_To_English ( $dots );
+print "[6/6] brailleDotNumbers_To_English:  $dots => $english\n";
 
 $Convert::Braille::dot_separator = undef;
 
-$ascii = braille_UnicodeToEnglish ( $unicode );
-print "[6/6] braille_UnicodeToEnglih:  $unicode => $ascii\n";
+#	english_To_BrailleUnicode
+#	english_To_BrailleAscii
+#	english_To_BrailleDotNumbers
 
-	englishToBrailleUnicode
-	englishToBrailleAscii
-	englishToBrailleDotNumbers
-
-	braille_AsciiToEnglish
-	braille_DotNumbersToEnglish
-	braille_UnicodeToEnglish
+#	brailleAscii_To_English
+#	brailleDotNumbers_To_English
+#	brailleUnicode_To_English
 
 
 __END__
